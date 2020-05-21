@@ -32,16 +32,11 @@ def getExistingWebConfig():
     currentConfig = open(filename, 'r').read()
     return json.loads(currentConfig)
 
-
-def getExistingWebConfigKeys(web_config):
-    return [key["name"] for key in web_config["customProviders"]]
-
-
 def getWebVal(url, service):
     return {
         'name': '{0}'.format(service).replace('-', ''),
         'url': url,
-        'tag': []
+        'tags': []
     }
 
 def getServiceURL(service):
@@ -52,23 +47,15 @@ def getServiceURL(service):
         url = 'https://console.aws.amazon%scom/systems-manager'
     return url
   
-def getServiceIndex(webConfig, service):
-    for index, obj in enumerate(webConfig['customProviders']):
-        if obj['name'] == service:
-            return index
-    raise Exception("Service not found")
-  
 def getNewWebConfig():  
         currentWebConfig = getExistingWebConfig()
-        currentWebConfigKeys = getExistingWebConfigKeys(currentWebConfig)
         customProviders = []
         for service in services.service_list:
+            for index, serviceObj in enumerate(currentWebConfig['customProviders']):
+                if service == serviceObj['name']:
+                    del currentWebConfig['customProviders'][index]
             url = getServiceURL(service)
-            if service in currentWebConfigKeys:
-                index = getServiceIndex(currentWebConfig, service)
-                customProviders[index] = getWebVal(url, service)
-            else:
-                customProviders.append(getWebVal(url, service))
+            customProviders.append(getWebVal(url, service))
         currentWebConfig["customProviders"].extend(customProviders)
         return currentWebConfig
 
