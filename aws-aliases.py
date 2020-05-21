@@ -23,7 +23,6 @@ import sys
 import json
 import services
 
-
 def getExistingWebConfig():
     filename = os.path.join(os.path.expanduser('~'), '.config/s/config')
     currentConfig = open(filename, 'r').read()
@@ -62,10 +61,9 @@ def getNewWebConfig():
         for service in services.service_list:
             url = getServiceURL(service)
             if service in currentWebConfigKeys:
-                index = int(getServiceIndex(currentWebConfig, service))
+                index = getServiceIndex(currentWebConfig, service)
                 customProviders[index] = getWebVal(url, service)
             else:
-                url = getServiceURL(service)
                 customProviders.append(getWebVal(url, service))
         currentWebConfig["customProviders"].extend(customProviders)
         return currentWebConfig
