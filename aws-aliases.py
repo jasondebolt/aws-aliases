@@ -6,12 +6,16 @@
    
    Installation:
      1) Install https://github.com/zquestz/s
-     2) Run this script
-     3) Copy the alias output to your .bash_profile
-     4) Copy the web config to your ~/.config/s/config file.
-     5) In your terminal, enter an AWS service name:
+     2) Make sure your ~/.config/s/config is a valid JSON document.
+     3) Run this script
+     4) Copy the alias output to your .bash_profile
+     5) Copy the web config to your ~/.config/s/config file.
+     6) In your terminal, enter an AWS service name:
      
         $ ec2
+        $ s3 && sqs
+        
+        You should see the AWS console for these services appear in browser tabs.
      
     USAGE:
       python aws-aliases.py web > /tmp/web-out.txt && cp /tmp/web-out.txt ~/.config/s/config
@@ -43,7 +47,7 @@ def getWebVal(url, service):
 def getServiceURL(service):
     url = 'https://console.aws.amazon%scom/' + service + '/home'
     if service == 'elb':
-        url = 'https://us-west-2.console.aws.amazon%scom/ec2/v2/home?#LoadBalancers:sort=loadBalancerName'
+        url = 'https://console.aws.amazon%scom/ec2/v2/home?#LoadBalancers:sort=loadBalancerName'
     elif service == 'ssm':
         url = 'https://console.aws.amazon%scom/systems-manager'
     return url
@@ -70,7 +74,7 @@ def getNewWebConfig():
 
 def main(args):
     if len(args) < 2:
-        print("python aws-alises.py [web|alias]")
+        print(__doc__)
         raise SystemExit()
 
     cmd = args[1]
