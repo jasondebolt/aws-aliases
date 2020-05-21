@@ -2,6 +2,9 @@
 
 Type an AWS service name in your terminal and the AWS console appears in your browser for that service.
 
+
+![](aws-aliases.gif)
+
 ## Installation
 
 - Install https://github.com/zquestz/s
