@@ -18,7 +18,7 @@
         You should see the AWS console for these services appear in browser tabs.
      
     USAGE:
-      python aws-aliases.py web > /tmp/web-out.txt && cp /tmp/web-out.txt ~/.config/s/config
+      python aws-aliases.py web > /tmp/out.txt && cp /tmp/out.txt ~/.config/s/config
       python aws-aliases.py alias >> ~/.bash_profile
 """
 
