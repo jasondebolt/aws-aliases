@@ -3,6 +3,7 @@ BASH_CONFIG = ~/.bash_profile
 .PHONY: clean
 clean:
 	python aws-aliases.py clean
+	rm -rf __pycache__
 
 .PHONY: build
 build:
