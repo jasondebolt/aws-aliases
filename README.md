@@ -7,6 +7,8 @@ Type an AWS service name in your terminal and the AWS console appears in your br
 ## Installation
 
 ```bash
+git clone https://github.com/jasondebolt/aws-aliases.git
+cd aws-aliases
 make install
 ```
 
