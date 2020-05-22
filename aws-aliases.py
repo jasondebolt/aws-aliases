@@ -18,7 +18,6 @@ def get_service_url(service):
         'chime': 'https://console.chime.aws.amazon.com/home',
         'ebs': 'https://console.aws.amazon.com/ec2/v2/home#Volumes:sort=desc:createTime',
         'elb': 'https://console.aws.amazon.com/ec2/v2/home?#LoadBalancers:sort=loadBalancerName',
-        'eventbridge': 'https://console.aws.amazon.com/events',
         'ssm': 'https://console.aws.amazon.com/systems-manager',
         'vpc': 'https://console.aws.amazon.com/vpc/home#vpcs:sort=VpcId'
     }
