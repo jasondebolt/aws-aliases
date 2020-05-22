@@ -18,3 +18,7 @@ $ s3 && sqs
 ```
 
  You should see the AWS console for these services appear in browser tabs.
+
+## Caveats
+AWS console URL's are inconsistent. Some services don't work with this tool yet.
+Feel free to create a pull request to add exception URL's to `aws-aliasess.py`.
