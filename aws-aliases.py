@@ -40,13 +40,14 @@ def getWebVal(url, service):
     }
 
 def getServiceURL(service):
-    url = 'https://console.aws.amazon%scom/' + service + '/home'
-    if service == 'elb':
-        url = 'https://console.aws.amazon%scom/ec2/v2/home?#LoadBalancers:sort=loadBalancerName'
-    elif service == 'ssm':
-        url = 'https://console.aws.amazon%scom/systems-manager'
-    return url
-  
+    default_url = 'https://console.aws.amazon%scom/' + service + '/home'
+    service_map = {
+        'chime': 'https://console.chime.aws.amazon%scom/home',
+        'elb': 'https://console.aws.amazon%scom/ec2/v2/home?#LoadBalancers:sort=loadBalancerName',
+        'ssm': 'https://console.aws.amazon%scom/systems-manager'
+    }
+    return service_map.get(service, default_url)
+
 def getNewWebConfig():  
         currentWebConfig = getExistingWebConfig()
         customProviders = []
