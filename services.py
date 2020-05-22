@@ -225,3 +225,8 @@ service_list = [
     'workspaces',
     'xray'
 ]
+
+# These services don't have aws CLI commands.
+other_services = [
+    'vpc'
+]
