@@ -41,12 +41,12 @@ def getWebVal(url, service):
 
 def getServiceURL(service):
     default_url = 'https://console.aws.amazon%scom/' + service + '/home'
-    service_map = {
+    exception_urls = {
         'chime': 'https://console.chime.aws.amazon%scom/home',
         'elb': 'https://console.aws.amazon%scom/ec2/v2/home?#LoadBalancers:sort=loadBalancerName',
         'ssm': 'https://console.aws.amazon%scom/systems-manager'
     }
-    return service_map.get(service, default_url)
+    return exception_urls.get(service, default_url)
 
 def getNewWebConfig():  
         currentWebConfig = getExistingWebConfig()
