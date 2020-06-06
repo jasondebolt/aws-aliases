@@ -12,6 +12,11 @@ import services
 
 ALL_SERVICES = services.service_list + services.other_services
 
+# These services may have CLI's with the same name as the service.
+IGNORED_SERVICES = [
+    'amplify'
+]
+
 def get_service_url(service):
     default_url = 'https://console.aws.amazon.com/{0}/home'.format(service)
     exception_urls = {
@@ -35,6 +40,8 @@ def main(args):
     else:
         alias_list = []
         for service in ALL_SERVICES:
+            if service in IGNORED_SERVICES:
+                continue
             alias_list.append('alias {0}="open {1}"'.format(service, get_service_url(service)))
         write_service_alias_file(alias_list)
 
